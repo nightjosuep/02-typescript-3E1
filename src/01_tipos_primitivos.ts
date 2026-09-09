@@ -26,10 +26,10 @@
 // - `promedioObjetivo` (number): Debe ser un número decimal (ej. 9.85).
 // - `estaMatriculado` (boolean): Debe ser true.
 
-export const nombreEstudiante: string = "";       // 👈 TODO: Escribe tu nombre aquí
-export const edadEstudiante: number = 0;          // 👈 TODO: Escribe tu edad aquí
-export const promedioObjetivo: number = 0;        // 👈 TODO: Escribe tu promedio objetivo
-export let estaMatriculado: boolean = false;    // 👈 TODO: Cambia a true
+export const nombreEstudiante: string = "Josue Peralta";       // 👈 TODO: Escribe tu nombre aquí
+export const edadEstudiante: number = 16;          // 👈 TODO: Escribe tu edad aquí
+export const promedioObjetivo: number = 9.90;        // 👈 TODO: Escribe tu promedio objetivo
+export let estaMatriculado: boolean = true;    // 👈 TODO: Cambia a true
 
 /**
  * TODO: Implementa la función `obtenerResumenPersonal` usando Template Strings (${...}).
@@ -38,7 +38,8 @@ export let estaMatriculado: boolean = false;    // 👈 TODO: Cambia a true
  */
 export function obtenerResumenPersonal(): string {
   // 👇 TODO: Escribe tu lógica aquí y reemplaza el return "":
-  return "";
+  let estadoMatricula = estaMatriculado;
+ return`👤 Estudiante: {nombreEstudiante} | 🎂 Edad: {edadEstudiante} años | 🎯 Meta: {promedioObjetivo}/10 | 📋 Estado:{estadoMatricula} MATRICULADO:NO_Matriculado`
 }
 
 // ============================================================================
@@ -54,8 +55,12 @@ export function obtenerResumenPersonal(): string {
  *    (Pista: usa Number((suma / notas.length).toFixed(2)))
  */
 export function calcularPromedio(notas: readonly number[]): number {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return 0:
-  return 0;
+  if(notas.length==0){
+    return 0;
+  }
+  let suma = notas.reduce((total, nota) => total + nota, 0);
+  let promedio = suma / notas.length;
+  return Number(promedio.toFixed(2));
 }
 
 // ============================================================================
@@ -76,8 +81,8 @@ export function formatearFichaEstudiante(
   nombre: string,
   edad: number,
   paralelo: "E1" | "E2",
-  activo: boolean
-): string {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return "":
-  return "";
+  activo: boolean)
+  : string {
+ let respuesta: string=`[FICHA UETS] ${nombre.toUpperCase()} (${edad} años) - Paralelo: ${paralelo} - Estado: ${activo ?"MATRICULADO":"RETIRADO"}`;
+  return respuesta;
 }
