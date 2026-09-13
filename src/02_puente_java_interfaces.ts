@@ -56,8 +56,8 @@ export interface PerfilUsuario {
 // TODO: Completa la variable constante `usuarioEjemplo` asignando valores válidos:
 export const usuarioEjemplo: PerfilUsuario = {
   id: "UETS-2026-001",
-  nombreCompleto: "",                                // 👈 TODO: Llena tu nombre completo
-  correo: "estudiante@est.salesianos.edu.ec",        // 👈 TODO: Tu correo institucional
+  nombreCompleto: "Josue Matias Peralta Bravo",                                // 👈 TODO: Llena tu nombre completo
+  correo: "josue.peraltab.est@uets.edu.ec",        // 👈 TODO: Tu correo institucional
   rol: "ESTUDIANTE"
 };
 
@@ -69,7 +69,8 @@ export const usuarioEjemplo: PerfilUsuario = {
  */
 export function formatearPerfilUsuario(usuario: PerfilUsuario): string {
   // 👇 TODO: Escribe tu lógica con Template Strings y reemplaza el return "":
-  return "";
+
+  return `[PERFIL] ${usuario.id} (${usuario.rol}): ${usuario.nombreCompleto} - ${usuario.correo}`;
 }
 
 // ============================================================================
@@ -101,6 +102,18 @@ export interface ProductoItem {
  * 4. Retornar el número redondeado a 2 decimales: Number(precioFinal.toFixed(2)).
  */
 export function calcularPrecioFinal(producto: ProductoItem): number {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return 0:
+  if (!producto.disponible) {
   return 0;
 }
+let precioFinal = producto.precio;
+
+  if (producto.descuentoPorcentaje && producto.descuentoPorcentaje > 0) {
+    const descuento =
+      producto.precio * (producto.descuentoPorcentaje / 100);
+
+    precioFinal = producto.precio - descuento;
+  }
+
+  return Number(precioFinal.toFixed(2));
+}
+
